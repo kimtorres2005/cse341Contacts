@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-// Define the contact schema
 const contactSchema = new mongoose.Schema({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
@@ -9,8 +8,16 @@ const contactSchema = new mongoose.Schema({
     birthday: { type: Date },
 });
 
-// Create a model using the schema
+// Static method to find a contact by ID
+contactSchema.statics.findById = async function (contactId) {
+    return this.findOne({ _id: contactId });
+};
+
+// Static method to find a contact by firstName
+contactSchema.statics.findByFirstName = async function (firstName) {
+    return this.find({ firstName: new RegExp(firstName, 'i') });
+};
+
 const Contact = mongoose.model('Contact', contactSchema, 'contacts');
 
-// Export the model
 module.exports = Contact;
