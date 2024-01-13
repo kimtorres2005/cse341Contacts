@@ -5,7 +5,7 @@ const controller = {};
 
 // Function to render the home page
 controller.home = (req, res) => {
-  res.send("Kimberly Torres");
+  res.send("Kimberly Torres: Contacts Project for CSE 341");
 };
 
 // Function to get all contacts from the database
