@@ -18,6 +18,16 @@ contactSchema.statics.findByFirstName = async function (firstName) {
     return this.find({ firstName: new RegExp(firstName, 'i') });
 };
 
+// Static method to update a contact by ID
+contactSchema.statics.updateContact = async function (contactId, update) {
+    return this.findOneAndUpdate({ _id: contactId }, update, { new: true });
+};
+
+// Static method to delete a contact by ID
+contactSchema.statics.deleteContact = async function (contactId) {
+    return this.findOneAndDelete({ _id: contactId });
+};
+
 const Contact = mongoose.model('Contact', contactSchema, 'contacts');
 
 module.exports = Contact;

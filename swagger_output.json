@@ -1,0 +1,242 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "CSE341 Contacts API",
+    "version": "1.0.0",
+    "description": "A simple contacts API for CSE341 to GET, POST, PUT, and DELETE contacts"
+  },
+  "host": "cse341contacts-grna.onrender.com",
+  "basePath": "/",
+  "schemes": ["https"],
+  "securityDefinitions": {
+    "ApiKeyAuth": {
+      "type": "apiKey",
+      "name": "ApiKey",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "ApiKeyAuth": ["c1cceaaac2e12fca5fd9f5da7f870b3d"]
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/contacts/": {
+      "get": {
+        "description": "Endpoint to get all contacts from the database.\n If ApiKey is needed: c1cceaaac2e12fca5fd9f5da7f870b3d",
+        "parameters": [
+          {
+            "name":"ApiKey",
+            "in":"header",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "Endpoint to POST contact into the database.\n If ApiKey is needed: c1cceaaac2e12fca5fd9f5da7f870b3d",
+        "parameters": [
+          {
+            "name":"ApiKey",
+            "in":"header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "favoriteColor": {
+                  "example": "any"
+                },
+                "birthday": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/contacts/{contactId}": {
+      "get": {
+        "description": "Endpoint to get contact by ID from the database.\n If ApiKey is needed: c1cceaaac2e12fca5fd9f5da7f870b3d",
+        "parameters": [
+          {
+            "name":"ApiKey",
+            "in":"header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "contactId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "Endpoint to UPDATE contact by ID in the database.\n If ApiKey is needed: c1cceaaac2e12fca5fd9f5da7f870b3d",
+        "parameters": [
+          {
+            "name":"ApiKey",
+            "in":"header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "contactId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "favoriteColor": {
+                  "example": "any"
+                },
+                "birthday": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "Endpoint to DELETE contact from the database.\n If ApiKey is needed: c1cceaaac2e12fca5fd9f5da7f870b3d",
+        "parameters": [
+          {
+            "name":"ApiKey",
+            "in":"header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "contactId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/contacts/firstName/{firstName}": {
+      "get": {
+        "description": "Endpoint to get contact by firstName from the database.\n If ApiKey is needed: c1cceaaac2e12fca5fd9f5da7f870b3d",
+        "parameters": [
+          {
+            "name":"ApiKey",
+            "in":"header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "firstName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}

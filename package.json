@@ -6,15 +6,23 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "generate-swagger": "node swagger.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autogen": "^0.0.1",
     "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.2",
     "express": "^4.17.1",
-    "mongoose": "^8.0.4"
+    "mongoose": "^8.0.4",
+    "swagger": "^0.7.5",
+    "swagger-autogen": "^2.23.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"

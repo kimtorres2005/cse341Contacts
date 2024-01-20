@@ -1,3 +1,4 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 
 const mongo = {};
@@ -6,7 +7,7 @@ const mongo = {};
 mongoose.Promise = global.Promise;
 
 // Connect to the database
-const uri = 'mongodb+srv://kimtorres2005:kimberly181986@cluster0.efctyh5.mongodb.net/CSE341?retryWrites=true&w=majority';
+const uri = process.env.MONGODB_URI;
 
 // Connection promise using the uri
 const db = mongoose.connect(uri);

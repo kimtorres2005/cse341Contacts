@@ -1,3 +1,5 @@
+// Description: Initialize the database and GET contacts from the database
+
 const model = require("../models/index");
 const Contact = model;
 
@@ -5,11 +7,15 @@ const controller = {};
 
 // Function to render the home page
 controller.home = (req, res) => {
+  // swagger.tags = ['Home'];
   res.send("Kimberly Torres: Contacts Project for CSE 341");
 };
 
 // Function to get all contacts from the database
 controller.list = (req, res) => {
+  // swagger.tags = ['Contacts'];
+  /* #swagger.description = 'Endpoint to get all contacts from the database.'\n
+        If ApiKey is needed: c1cceaaac2e12fca5fd9f5da7f870b3d */
   model
     .find()
     .then((results) => {
@@ -23,55 +29,42 @@ controller.list = (req, res) => {
 
 // Function to get a contact by ID
 controller.getById = async function (req, res) {
-    try {
-        const { contactId } = req.params;
-        const contact = await Contact.findById(contactId);
+  // swagger.tags = ['Contacts'];
+  /* #swagger.description = 'Endpoint to get contact by ID from the database.'\n
+        If ApiKey is needed: c1cceaaac2e12fca5fd9f5da7f870b3d */
 
-        if (!contact) {
-            return res.status(404).json({ message: 'Contact not found' });
-        }
+  try {
+    const { contactId } = req.params;
+    const contact = await Contact.findById(contactId);
 
-        res.json(contact);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+    if (!contact) {
+      return res.status(404).json({ message: "Contact not found" });
     }
+
+    res.json(contact);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
 // Function to get a contact by firstName
 controller.getByFirstName = async function (req, res) {
-    try {
-        const { firstName } = req.params;
-        const contacts = await Contact.findByFirstName(firstName);
+  // swagger.tags = ['Contacts'];
+    /* #swagger.description = 'Endpoint to get contact by firstName from the database.'\n
+        If ApiKey is needed: c1cceaaac2e12fca5fd9f5da7f870b3d */
 
-        if (contacts.length === 0) {
-            return res.status(404).json({ message: 'Contacts not found' });
-        }
+  try {
+    const { firstName } = req.params;
+    const contacts = await Contact.findByFirstName(firstName);
 
-        res.json(contacts);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+    if (contacts.length === 0) {
+      return res.status(404).json({ message: "Contacts not found" });
     }
-};
 
-// Function to add a new contact to the database
-controller.insert = async function (req, res) {
-    try {
-        // Create a new contact from the request body
-        const { firstName, lastName, email, favoriteColor, birthday } = req.body;
-        const newContact = new model({
-            firstName,
-            lastName,
-            email,
-            favoriteColor,
-            birthday,
-        });
-        // Save the new contact
-        const savedContact = await newContact.save();
-
-        res.status(201).json(savedContact);
-    } catch (error) {
-        res.status(500).json({ error: error });
-    }
+    res.json(contacts);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
 module.exports = controller;
