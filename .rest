@@ -1,13 +1,15 @@
-// create a .rest file in the root of your project
+// *******************************************************************
+// .rest routes for testing with localhost server
+// *******************************************************************
 
 // GET all contacts
 GET http://localhost:5500/contacts
 
 // GET a contact by ID
-GET http://localhost:5500/contacts/65a2f32449fc542d2c6ca5f2
+GET http://localhost:5500/contacts/"enter contact id"
 
 // GET contacts by firstName
-GET http://localhost:5500/contacts/firstName/Kim
+GET http://localhost:5500/contacts/firstName/"enter first name"
 
 // POST a new contact
 POST http://localhost:5500/contacts
@@ -22,7 +24,7 @@ Content-Type: application/json
 }
 
 // PUT a contact
-PUT http://localhost:5500/contacts/65ac19d220861149405efbe5
+PUT http://localhost:5500/contacts/"enter contact id"
 Content-Type: application/json
 
 {
@@ -34,4 +36,44 @@ Content-Type: application/json
 }
 
 // DELETE a contact
-DELETE http://localhost:5500/contacts/65ac19d220861149405efbe5
+DELETE http://localhost:5500/contacts/"enter contact id"
+
+// *******************************************************************
+// .rest routes for testing with localhost server
+// *******************************************************************
+
+// GET all contacts
+GET https://cse341contacts-grna.onrender.com/contacts
+
+// GET a contact by ID
+GET https://cse341contacts-grna.onrender.com/contacts/"enter contact id"
+
+// GET contacts by firstName
+GET https://cse341contacts-grna.onrender.com/contacts/firstName/"enter first name"
+
+// POST a new contact
+POST https://cse341contacts-grna.onrender.com/contacts
+Content-Type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "js@fakeemail.com",
+    "favoriteColor": "blue",
+    "birthday": "1980-01-01"
+}
+
+// PUT a contact
+PUT https://cse341contacts-grna.onrender.com/contacts/"enter contact id"
+Content-Type: application/json
+
+{
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "email": "jd@fakeemail.com",
+    "favoriteColor": "blue",
+    "birthday": "1980-01-01"
+}
+
+// DELETE a contact
+DELETE https://cse341contacts-grna.onrender.com/contacts/"enter contact id"
